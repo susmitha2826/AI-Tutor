@@ -1,13 +1,13 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 import os
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-# Initialize the OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Set up OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Customizable AI Tutor Character
 def get_tutor_character():
@@ -28,7 +28,7 @@ def python_tutor(prompt, name, interests):
     The child is interested in {interests_str}. Use these interests to make examples and explanations relatable.
     Keep your responses short, simple, and easy to understand.
     """
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": system_message},
