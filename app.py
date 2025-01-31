@@ -29,14 +29,14 @@ def python_tutor(prompt, name, interests):
     Keep your responses short, simple, and easy to understand.
     """
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo",  # Choose the appropriate model
         messages=[
             {"role": "system", "content": system_message},
-            {"role": "user", "content": prompt},
+            {"role": "user", "content": prompt}
         ],
+        max_tokens=100
     )
-    return response.choices[0].message.content
-
+    return response['choices'][0]['message']['content'].strip()
 # Streamlit App
 def main():
     st.title("PythonPal: Your AI-Powered Python Tutor 🐍")
