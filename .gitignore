@@ -1,0 +1,12 @@
+# .gitignore file
+.env
+__pycache__
+*.pyc
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+streamlit
+venv
+__init__.py
