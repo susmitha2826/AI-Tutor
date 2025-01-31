@@ -1,13 +1,13 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-# Set up OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Initialize the OpenAI client
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Customizable AI Tutor Character
 def get_tutor_character():
@@ -28,15 +28,15 @@ def python_tutor(prompt, name, interests):
     The child is interested in {interests_str}. Use these interests to make examples and explanations relatable.
     Keep your responses short, simple, and easy to understand.
     """
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # Choose the appropriate model
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": system_message},
-            {"role": "user", "content": prompt}
+            {"role": "user", "content": prompt},
         ],
-        max_tokens=100
     )
-    return response['choices'][0]['message']['content'].strip()
+    return response.choices[0].message.content
+
 # Streamlit App
 def main():
     st.title("PythonPal: Your AI-Powered Python Tutor 🐍")
