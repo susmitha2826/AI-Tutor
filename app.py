@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Initialize the OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("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"))
 
 # Customizable AI Tutor Character
 def get_tutor_character():
