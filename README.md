@@ -10,4 +10,4 @@ PythonPal is an interactive AI-powered Python tutor designed to help children le
 ## Setup
 1. Clone this repository:
    ```bash
-   git clone https://github.com/susmitha2826/python_tutor.git
+   git clone https://github.com/susmitha2826/AI-Tutor.git
